@@ -1,9 +1,9 @@
 from django.contrib import admin
-from django.urls import path
-from merger.views import home, merge_excel
+from django.urls import path, include
+from CONSO.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('merge/', merge_excel, name='merge_excel'),
+    path('merger/', include('merger.urls')),
 ]

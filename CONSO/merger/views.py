@@ -3,9 +3,23 @@ from django.shortcuts import render
 from .forms import MergeRequestForm
 from .models import MergeRequest
 from openpyxl import load_workbook
+import mimetypes
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 
 def home(request):
     return render(request, 'merger/index.html')
+
+def preview_file(request, pk, field):
+    merge_request = get_object_or_404(MergeRequest, pk=pk)
+    file_path = getattr(merge_request, field).path
+    file_name = os.path.basename(file_path)
+    file_type, _ = mimetypes.guess_type(file_path)
+
+    with open(file_path, 'rb') as f:
+        response = HttpResponse(f.read(), content_type=file_type)
+        response['Content-Disposition'] = f'inline; filename="{file_name}"'
+        return response
 
 def merge_excel(request):
     if request.method == 'POST':

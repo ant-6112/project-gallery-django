@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSBC Use Cases</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'images/hsbc_logo.png' %}" alt="HSBC Logo" height="30">
+      </a>
+      <a class="navbar-brand" href="#">Use Cases</a>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <select id="team-filter" class="form-select">
+          <option value="all">All Teams</option>
+          <option value="team1">Team 1</option>
+          <option value="team2">Team 2</option>
+          </select>
+      </div>
+      <div class="col-md-6">
+        <input type="text" id="search-bar" class="form-control" placeholder="Search tools...">
+      </div>
+    </div>
+
+    <div class="row gy-4" id="card-container">
+        
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVFQWjxhNBM9L2VOVcbKMeMeIlYWPiU85iEtysMUvNqA7EYyN5q" crossorigin="anonymous"></script>
+  <script>
+    const cardContainer = document.getElementById('card-container');
+    const searchBar = document.getElementById('search-bar');
+    const teamFilter = document.getElementById('team-filter');
+
+    // Function to create a card element
+    function createCard(imageUrl, teamName, projectName, projectCode) {
+      const card = document.createElement('div');
+      card.classList.add('col-md-4');
+      card.innerHTML = `
+        <div class="card">
+          <img src="<span class="math-inline">\{imageUrl\}" class\="card\-img\-top" alt\="</span>{projectName}">
+          <div class="card-body">
+            <p class="card-text text-muted"><span class="math-inline">\{teamName\}</p\>
+<h5 class\="card\-title"\></span>{projectName}</h5>
+            <p class="card-text text-muted">${projectCode}</p>
+            <a href="#" class="btn btn-primary">View Tool</a>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+
+    // Function to filter and display cards based on team and search term
+    function searchCards() {
+    const searchTerm = $('#search-input').val().toLowerCase();
+    console.log('Search term:', searchTerm);
+
+    $('.card').each(function() {
+        const name = $(this).find('.card-title').text().toLowerCase();
+        const team = $(this).find('.card-text').text().toLowerCase();
+        console.log('Checking card:', name, team);
+
+        if (name.includes(searchTerm) || team.includes(searchTerm)) {
+            $(this).parent().show();
+        } else {
+            $(this).parent().hide();
+        }
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -19,10 +19,16 @@
                     <div class="form-group">
                         {{ form.file1.label_tag }}
                         {{ form.file1 }}
+                        {% if form.instance.file1 %}
+                            <a href="{% url 'merger:preview_file' form.instance.pk 'file1' %}" class="btn btn-primary" target="_blank">Preview File 1</a>
+                        {% endif %}
                     </div>
                     <div class="form-group">
                         {{ form.file2.label_tag }}
                         {{ form.file2 }}
+                        {% if form.instance.file2 %}
+                            <a href="{% url 'merger:preview_file' form.instance.pk 'file2' %}" class="btn btn-primary" target="_blank">Preview File 2</a>
+                        {% endif %}
                     </div>
                     <button type="submit" class="btn btn-primary">Merge</button>
                 </form>
