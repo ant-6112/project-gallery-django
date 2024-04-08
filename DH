@@ -1,0 +1,106 @@
+class DetailsForm(forms.Form):
+    field_names = forms.CharField(label='Field Names', help_text='Comma-separated list of field names')
+    field_types = forms.CharField(label='Field Types', help_text='Comma-separated list of field types')
+
+class InputsForm(forms.Form):
+    def __init__(self, field_names, field_types, *args, **kwargs):
+        super(InputsForm, self).__init__(*args, **kwargs)
+        names = field_names.split(',')
+        types = field_types.split(',')
+        for name, type in zip(names, types):
+            if type == 'Text':
+                self.fields[name] = forms.CharField(label=name)
+            elif type == 'Integer':
+                self.fields[name] = forms.IntegerField(label=name)
+            elif type == 'BigInteger':
+                self.fields[name] = forms.BigIntegerField(label=name)
+            elif type == 'Float':
+                self.fields[name] = forms.FloatField(label=name)
+            elif type == 'Boolean':
+                self.fields[name] = forms.BooleanField(label=name)
+            elif type == 'Date':
+                self.fields[name] = forms.DateField(label=name)
+            elif type == 'File':
+                self.fields[name] = forms.FileField(label=name)
+            elif type == 'Image':
+                self.fields[name] = forms.ImageField(label=name)
+            elif type == 'Time':
+                self.fields[name] = forms.TimeField(label=name)
+            elif type == 'Email':
+                self.fields[name] = forms.EmailField(label=name)
+
+
+import os 
+import importlib  
+from django.shortcuts import render
+from .forms import DetailsForm, InputsForm
+
+def details_view(request):
+    if request.method == 'POST':
+        details_form = DetailsForm(request.POST)
+        if details_form.is_valid():
+            field_names = details_form.cleaned_data['field_names']
+            field_types = details_form.cleaned_data['field_types']
+            return render(request, 'CONSO/inputs.html', {'inputs_form': InputsForm(field_names, field_types)})
+    else:
+        details_form = DetailsForm()
+    return render(request, 'CONSO/details.html', {'details_form': details_form})
+
+def process_inputs(request):
+    if request.method == 'POST':
+        inputs_form = InputsForm(request.POST)
+        if inputs_form.is_valid():
+            # Process the form data here, e.g., save to the database, perform calculations, etc.
+            process_function_name = inputs_form.cleaned_data.get('process_function_name')
+            script_path = os.path.join(SCRIPTS_DIR, process_function_name + '.py')
+            if os.path.exists(script_path):
+                module = importlib.import_module('scripts.' + process_function_name)
+                process_function = getattr(module, process_function_name)
+                process_function(inputs_form.cleaned_data)
+                return HttpResponse("Form processed successfully.")
+            else:
+                return HttpResponse("Script not found.")
+    return HttpResponse("Invalid form submission.")
+
+
+# urls.py
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.details_view, name='details_view'),
+    path('process/', views.process_inputs, name='process_inputs'), # Add this line
+]
+
+<!-- details.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter Details</title>
+</head>
+<body>
+    <h2>Enter Details</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ details_form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
+<!-- inputs.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generated Inputs</title>
+</head>
+<body>
+    <h2>Generated Inputs</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ inputs_form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
