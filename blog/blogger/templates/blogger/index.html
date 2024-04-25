@@ -1,0 +1,26 @@
+{% extends 'blogger/base.html' %}
+
+{% block content %}
+
+<h1 class = "mb-4 text-primary">Add Field</h1>
+
+<div id="form-fields">
+    {% include 'blogger/form.html' %}
+</div>
+
+<div class="my-4">
+    <button type="button" class="btn btn-success me-2"                
+    hx-get="{% url 'create-field' %}"
+    hx-target="#form-fields"
+    hx-swap="beforeend"
+    >+ Add Field</button>
+    <button type="button" class="btn btn-primary" id="submit-all">Submit All</button>
+</div>
+
+<ul id="field-list">
+    {% for field in fields %}
+        {% include 'blogger/field.html' %}
+    {% endfor %}
+</ul>
+
+{% endblock %}

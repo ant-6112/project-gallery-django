@@ -1,8 +1,33 @@
 from django import forms
 from django.shortcuts import render, redirect
-from .models import FormField,Form
-from .forms import DynamicForm,FormFieldForm, FormFieldFormSet
+from .models import field,Form
+from .forms import DynamicForm,FormDy,FormMaker
 
+
+def index(request):
+    context = {'form': FormDy()}
+    return render(request, 'blogger/index.html',context)
+
+def create_form(request):
+    if request.method == 'POST':
+        form = FormMaker(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect('create_field')
+
+    return render(request, 'blogger/form2.html',{'form': FormMaker()})
+
+def create_field(request):
+    if request.method == 'POST':
+        form = FormDy(request.POST or None)
+        if form.is_valid():
+            field = form.save()
+            context = {'field': field}
+            return render(request, 'blogger/field.html',context)
+
+    return render(request, 'blogger/form.html',{'form': FormDy()})
+
+"""
 def form_creator(request):
     FormSet = forms.formset_factory(FormFieldForm, formset=FormFieldFormSet, extra=1)
     if request.method == 'POST':
@@ -19,7 +44,6 @@ def form_creator(request):
         formset = FormSet()
     return render(request, 'blogger/form_creator.html', {'formset': formset})
 
-"""
 def form_creator(request):
     FormSet = forms.formset_factory(FormFieldForm, formset=FormFieldFormSet, extra=1 )
     if request.method == 'POST':

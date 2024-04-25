@@ -1,6 +1,7 @@
 from django import forms
-from .models import FormField
+from .models import field,Form
 
+"""
 class FormFieldForm(forms.ModelForm):
     class Meta:
         model = FormField
@@ -8,7 +9,6 @@ class FormFieldForm(forms.ModelForm):
 
 class FormFieldFormSet(forms.BaseFormSet):
     def clean(self):
-        """Checks that no two fields have the same name or type."""
         if any(self.errors):
             return
         names = []
@@ -24,13 +24,34 @@ class FormFieldFormSet(forms.BaseFormSet):
                 if type not in ['char', 'text']:
                     raise forms.ValidationError("Invalid field type submitted.")
                 
+"""
+
+class FormMaker(forms.ModelForm):
+    class Meta:
+        model = Form
+        fields = (
+            'name',
+        )
+
+class FormDy(forms.ModelForm):
+    class Meta:
+        model = field
+        fields = (
+            'fieldname','fieldtype'
+        )
+        widgets = {
+            'fieldname': forms.TextInput(attrs={'class' : 'form-control'}),
+            'fieldtype': forms.TextInput(attrs={'class' : 'form-control'})
+        }
+
+
 class DynamicForm(forms.Form):
     def __init__(self, *args, **kwargs):
         form_fields = kwargs.pop('form_fields', None)
         super(DynamicForm, self).__init__(*args, **kwargs)
         if form_fields:
             for field in form_fields:
-                if field.type == 'char':
-                    self.fields[field.name] = forms.CharField(max_length=200)
-                elif field.type == 'text':
-                    self.fields[field.name] = forms.TextField()
+                if field.fieldtype == 'char':
+                    self.fields[field.fieldname] = forms.CharField(max_length=200)
+                elif field.fieldtype == 'text':
+                    self.fields[field.fieldname] = forms.TextField()
