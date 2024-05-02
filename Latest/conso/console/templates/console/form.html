@@ -1,0 +1,24 @@
+<form hx-post="{% url 'create-field' %}" hx-target="#field-list" hx-swap="beforeend"
+    hx-on="htmx:afterRequest: this.remove()"
+    hx-trigger="click from:#submit-all"
+>
+    <div class="row">
+        <div class="col-4 cold-md-3">
+            <label for="{{form.fieldname.id_for_label}}">{{form.fieldname.label}}</label>
+            {{form.fieldname}}
+        </div>
+        <div class="col-4 col-md-3">
+            <label for="{{form.fieldtype.id_for_label}}">{{form.fieldtype.label}}</label>
+            {{form.fieldtype}}
+        </div>
+        <div class="col-4 col-md-3">
+            <label for="{{form.projectForm.id_for_label}}">{{form.projectForm.label}}</label>
+            {{form.projectForm}}
+        </div>
+        <div class="col-3 align-self-end">
+            <button class="btn btn-danger"
+            hx-on="click: this.closest('form').remove()">Cancel</button>
+        </div>
+    </div>
+</form>
+
