@@ -4,10 +4,15 @@ import os
 class MainFrame(wx.Frame):
     def __init__(self):
         super().__init__(parent=None, title="HSS Monthly Activity")
-        self.SetSize(400, 200)
+        self.SetSize(800, 600)  # Adjust the size as needed
 
         panel = wx.Panel(self)
         main_sizer = wx.BoxSizer(wx.VERTICAL)
+
+        # Header
+        header_bitmap = wx.Bitmap("img1.jpg", wx.BITMAP_TYPE_ANY)
+        header_static_bitmap = wx.StaticBitmap(panel, -1, header_bitmap)
+        main_sizer.Add(header_static_bitmap, 0, wx.EXPAND | wx.TOP | wx.LEFT | wx.RIGHT, 5)
 
         # Download Path
         download_path_sizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -31,21 +36,9 @@ class MainFrame(wx.Frame):
         main_sizer.Add(download_path_sizer, 0, wx.EXPAND | wx.ALL, 5)
         main_sizer.Add(button_sizer, 0, wx.ALIGN_CENTER | wx.ALL, 5)
 
+        # Footer
+        footer_bitmap = wx.Bitmap("img2.jpg", wx.BITMAP_TYPE_ANY)
+        footer_static_bitmap = wx.StaticBitmap(panel, -1, footer_bitmap)
+        main_sizer.Add(footer_static_bitmap, 0, wx.EXPAND | wx.BOTTOM | wx.LEFT | wx.RIGHT, 5)
+
         panel.SetSizer(main_sizer)
-
-    def on_browse(self, event):
-        dialog = wx.DirDialog(self, "Choose a directory")
-        if dialog.ShowModal() == wx.ID_OK:
-            self.download_path_text.SetValue(dialog.GetPath())
-        dialog.Destroy()
-
-    def on_execute(self, event):
-        # Execution logic goes here
-        print("Execute button clicked")
-        self.send_mail_button.Enable()
-
-if __name__ == "__main__":
-    app = wx.App()
-    frame = MainFrame()
-    frame.Show()
-    app.MainLoop()
