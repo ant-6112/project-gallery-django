@@ -1,44 +1,48 @@
-import wx
 import os
+import glob
+import pandas as pd
 
-class MainFrame(wx.Frame):
-    def __init__(self):
-        super().__init__(parent=None, title="HSS Monthly Activity")
-        self.SetSize(800, 600)  # Adjust the size as needed
+def combine_csv_files(folder_path, output_file):
+    # Create an empty list to store the combined data
+    combined_data = []
 
-        panel = wx.Panel(self)
-        main_sizer = wx.BoxSizer(wx.VERTICAL)
+    # Find all CSV files in the folder that contain "_log_" in their names
+    csv_files = glob.glob(os.path.join(folder_path, "*_log_*.csv"))
 
-        # Header
-        header_bitmap = wx.Bitmap("img1.jpg", wx.BITMAP_TYPE_ANY)
-        header_static_bitmap = wx.StaticBitmap(panel, -1, header_bitmap)
-        main_sizer.Add(header_static_bitmap, 0, wx.EXPAND | wx.TOP | wx.LEFT | wx.RIGHT, 5)
+    if not csv_files:
+        print("No CSV files found in the specified folder.")
+        return
 
-        # Download Path
-        download_path_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        download_path_label = wx.StaticText(panel, label="Download Path:")
-        self.download_path_text = wx.TextCtrl(panel)
-        download_path_button = wx.Button(panel, label="Browse")
-        download_path_button.Bind(wx.EVT_BUTTON, self.on_browse)
-        download_path_sizer.Add(download_path_label, 0, wx.ALL, 5)
-        download_path_sizer.Add(self.download_path_text, 1, wx.EXPAND | wx.ALL, 5)
-        download_path_sizer.Add(download_path_button, 0, wx.ALL, 5)
+    # Iterate over the CSV files
+    for file_path in csv_files:
+        try:
+            # Read the CSV file into a DataFrame
+            data = pd.read_csv(file_path)
 
-        # Buttons
-        button_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.execute_button = wx.Button(panel, label="Execute")
-        self.execute_button.Bind(wx.EVT_BUTTON, self.on_execute)
-        self.send_mail_button = wx.Button(panel, label="Sending Mail")
-        self.send_mail_button.Disable()
-        button_sizer.Add(self.execute_button, 0, wx.ALL, 5)
-        button_sizer.Add(self.send_mail_button, 0, wx.ALL, 5)
+            # Append the data to the combined_data list
+            combined_data.append(data)
 
-        main_sizer.Add(download_path_sizer, 0, wx.EXPAND | wx.ALL, 5)
-        main_sizer.Add(button_sizer, 0, wx.ALIGN_CENTER | wx.ALL, 5)
+        except pd.errors.EmptyDataError:
+            print(f"Skipping empty file: {os.path.basename(file_path)}")
+        except pd.errors.ParserError as e:
+            print(f"Error parsing file: {os.path.basename(file_path)}, {e}")
 
-        # Footer
-        footer_bitmap = wx.Bitmap("img2.jpg", wx.BITMAP_TYPE_ANY)
-        footer_static_bitmap = wx.StaticBitmap(panel, -1, footer_bitmap)
-        main_sizer.Add(footer_static_bitmap, 0, wx.EXPAND | wx.BOTTOM | wx.LEFT | wx.RIGHT, 5)
+    if not combined_data:
+        print("No valid CSV files found.")
+        return
 
-        panel.SetSizer(main_sizer)
+    # Concatenate all the DataFrames into a single DataFrame
+    combined_df = pd.concat(combined_data, ignore_index=True)
+
+    # Write the combined DataFrame to a new CSV file
+    combined_df.to_csv(output_file, index=False)
+    print(f"Combined CSV file saved as: {output_file}")
+
+# Prompt the user for the folder path
+folder_path = input("Enter the folder path: ")
+
+# Prompt the user for the output file name
+output_file = input("Enter the output file name (with .csv extension): ")
+
+# Call the function to combine the CSV files
+combine_csv_files(folder_path, output_file)
