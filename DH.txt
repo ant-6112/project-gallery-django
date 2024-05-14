@@ -1,4 +1,4 @@
-Sure, here's the updated code with a text box labeled "Number of Files Pasted:" below the buttons:
+Sure, I've made the necessary changes to make the text box smaller and position it at the horizontal end of the same line as the buttons. Here's the updated code:
 
 ```python
 import wx
@@ -27,25 +27,22 @@ class MainFrame(wx.Frame):
         download_path_sizer.Add(self.download_path_text, 1, wx.EXPAND | wx.ALL, 5)
         download_path_sizer.Add(download_path_button, 0, wx.ALL, 5)
 
-        # Buttons
+        # Buttons and Number of Files Pasted
         button_sizer = wx.BoxSizer(wx.HORIZONTAL)
         self.execute_button = wx.Button(panel, label="Execute")
         self.execute_button.Bind(wx.EVT_BUTTON, self.on_execute)
         self.send_mail_button = wx.Button(panel, label="Sending Mail")
         self.send_mail_button.Disable()
+        files_pasted_label = wx.StaticText(panel, label="Number of Files Pasted:")
+        self.files_pasted_text = wx.TextCtrl(panel, style=wx.TE_PROCESS_ENTER, size=(50, -1))
         button_sizer.Add(self.execute_button, 0, wx.ALL, 5)
         button_sizer.Add(self.send_mail_button, 0, wx.ALL, 5)
-
-        # Number of Files Pasted
-        files_pasted_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        files_pasted_label = wx.StaticText(panel, label="Number of Files Pasted:")
-        self.files_pasted_text = wx.TextCtrl(panel, style=wx.TE_READONLY)
-        files_pasted_sizer.Add(files_pasted_label, 0, wx.ALL, 5)
-        files_pasted_sizer.Add(self.files_pasted_text, 1, wx.EXPAND | wx.ALL, 5)
+        button_sizer.AddStretchSpacer()  # Add a spacer to push the text box to the right
+        button_sizer.Add(files_pasted_label, 0, wx.ALL, 5)
+        button_sizer.Add(self.files_pasted_text, 0, wx.ALL, 5)
 
         main_sizer.Add(download_path_sizer, 0, wx.EXPAND | wx.ALL, 5)
-        main_sizer.Add(button_sizer, 0, wx.ALIGN_CENTER | wx.ALL, 5)
-        main_sizer.Add(files_pasted_sizer, 0, wx.EXPAND | wx.ALL, 5)
+        main_sizer.Add(button_sizer, 0, wx.EXPAND | wx.ALL, 5)
 
         # Footer
         footer_bitmap = wx.Bitmap("img2.jpg", wx.BITMAP_TYPE_ANY)
@@ -74,12 +71,10 @@ if __name__ == "__main__":
     app.MainLoop()
 ```
 
-In this updated code:
+Here are the changes made:
 
-1. A new sizer (`files_pasted_sizer`) is created as a horizontal box sizer.
-2. A `wx.StaticText` label with the text "Number of Files Pasted:" is added to the `files_pasted_sizer`.
-3. A `wx.TextCtrl` labeled `self.files_pasted_text` is added to the `files_pasted_sizer`. This text control is set to read-only mode using the `style=wx.TE_READONLY` parameter.
-4. The `files_pasted_sizer` is added to the main sizer using the `wx.EXPAND` flag to make the text control stretch horizontally, and appropriate border flags (`wx.ALL`) to add spacing around it.
-5. In the `on_execute` method, after enabling the "Sending Mail" button, a line is added to update the value of the `self.files_pasted_text` text control with the string "10". You can replace this with the actual logic to get the number of files pasted.
-
-With these changes, a new text box labeled "Number of Files Pasted:" will appear below the buttons. Initially, it will be empty, but when the "Execute" button is clicked, the text box will be populated with the value "10" (or whatever value you choose to set based on your logic​​​​​​​​​​​​​​​​
+1. In the `__init__` method, the `button_sizer` now includes the "Number of Files Pasted" label and text control, in addition to the "Execute" and "Sending Mail" buttons.
+2. The `wx.TextCtrl` labeled `self.files_pasted_text` is now created with a size of `(50, -1)`, which sets the width to 50 pixels and the height to the default value for a single-line text control.
+3. The `style=wx.TE_PROCESS_ENTER` parameter is added to the `wx.TextCtrl` creation, which allows the text control to generate an event when the Enter key is pressed.
+4. The `button_sizer` now includes a call to `AddStretchSpacer()`, which adds a spacer that expands to fill the remaining horizontal space, effectively pushing the "Number of Files Pasted" label and text control to the right side.
+5. The order of adding the widgets to the `button_s​​​​​​​​​​​​​​​​
