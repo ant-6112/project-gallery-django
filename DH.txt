@@ -1,8 +1,11 @@
-Sure, I've made the necessary changes to make the text box smaller and position it at the horizontal end of the same line as the buttons. Here's the updated code:
+In wxPython, the focus is typically set on controls that can receive user input, such as text controls or buttons. However, you can still set the focus on static text controls, although they won't show a visible focus indicator by default.
+
+To set the focus on a static text control, you can use the `SetFocus` method provided by the `wx.Window` class, which is the base class for all wxPython widgets.
+
+Here's an example of how you can modify your code to set the focus on the "Download Path" label when the user presses the Tab key:
 
 ```python
 import wx
-import os
 
 class MainFrame(wx.Frame):
     def __init__(self):
@@ -12,57 +15,29 @@ class MainFrame(wx.Frame):
         panel = wx.Panel(self)
         main_sizer = wx.BoxSizer(wx.VERTICAL)
 
-        # Header
-        header_bitmap = wx.Bitmap("img1.jpg", wx.BITMAP_TYPE_ANY)
-        header_static_bitmap = wx.StaticBitmap(panel, -1, header_bitmap)
-        main_sizer.Add(header_static_bitmap, 0, wx.EXPAND | wx.TOP | wx.LEFT | wx.RIGHT, 5)
+        # ... (Your existing code for header, download path, buttons, and footer)
 
-        # Download Path
+        self.download_path_label = wx.StaticText(panel, label="Download Path:")
+        self.download_path_label.Bind(wx.EVT_SET_FOCUS, self.on_set_focus)
+
         download_path_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        download_path_label = wx.StaticText(panel, label="Download Path:")
-        self.download_path_text = wx.TextCtrl(panel)
-        download_path_button = wx.Button(panel, label="Browse")
-        download_path_button.Bind(wx.EVT_BUTTON, self.on_browse)
-        download_path_sizer.Add(download_path_label, 0, wx.ALL, 5)
+        download_path_sizer.Add(self.download_path_label, 0, wx.ALL, 5)
         download_path_sizer.Add(self.download_path_text, 1, wx.EXPAND | wx.ALL, 5)
         download_path_sizer.Add(download_path_button, 0, wx.ALL, 5)
 
-        # Buttons and Number of Files Pasted
-        button_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.execute_button = wx.Button(panel, label="Execute")
-        self.execute_button.Bind(wx.EVT_BUTTON, self.on_execute)
-        self.send_mail_button = wx.Button(panel, label="Sending Mail")
-        self.send_mail_button.Disable()
-        files_pasted_label = wx.StaticText(panel, label="Number of Files Pasted:")
-        self.files_pasted_text = wx.TextCtrl(panel, style=wx.TE_PROCESS_ENTER, size=(50, -1))
-        button_sizer.Add(self.execute_button, 0, wx.ALL, 5)
-        button_sizer.Add(self.send_mail_button, 0, wx.ALL, 5)
-        button_sizer.AddStretchSpacer()  # Add a spacer to push the text box to the right
-        button_sizer.Add(files_pasted_label, 0, wx.ALL, 5)
-        button_sizer.Add(self.files_pasted_text, 0, wx.ALL, 5)
-
-        main_sizer.Add(download_path_sizer, 0, wx.EXPAND | wx.ALL, 5)
-        main_sizer.Add(button_sizer, 0, wx.EXPAND | wx.ALL, 5)
-
-        # Footer
-        footer_bitmap = wx.Bitmap("img2.jpg", wx.BITMAP_TYPE_ANY)
-        footer_static_bitmap = wx.StaticBitmap(panel, -1, footer_bitmap)
-        main_sizer.Add(footer_static_bitmap, 0, wx.EXPAND | wx.BOTTOM | wx.LEFT | wx.RIGHT, 5)
+        # ... (Rest of your code)
 
         panel.SetSizer(main_sizer)
 
-    def on_browse(self, event):
-        dialog = wx.DirDialog(self, "Choose a directory")
-        if dialog.ShowModal() == wx.ID_OK:
-            self.download_path_text.SetValue(dialog.GetPath())
-        dialog.Destroy()
+    def on_set_focus(self, event):
+        # Add your custom focus handling code here
+        # For example, you can change the label's font or color
+        font = self.download_path_label.GetFont()
+        font.SetWeight(wx.FONTWEIGHT_BOLD)
+        self.download_path_label.SetFont(font)
+        event.Skip()
 
-    def on_execute(self, event):
-        # Execution logic goes here
-        print("Execute button clicked")
-        self.send_mail_button.Enable()
-        # Update the number of files pasted
-        self.files_pasted_text.SetValue("10")
+    # ... (Rest of your methods)
 
 if __name__ == "__main__":
     app = wx.App()
@@ -71,10 +46,13 @@ if __name__ == "__main__":
     app.MainLoop()
 ```
 
-Here are the changes made:
+In this modified code:
 
-1. In the `__init__` method, the `button_sizer` now includes the "Number of Files Pasted" label and text control, in addition to the "Execute" and "Sending Mail" buttons.
-2. The `wx.TextCtrl` labeled `self.files_pasted_text` is now created with a size of `(50, -1)`, which sets the width to 50 pixels and the height to the default value for a single-line text control.
-3. The `style=wx.TE_PROCESS_ENTER` parameter is added to the `wx.TextCtrl` creation, which allows the text control to generate an event when the Enter key is pressed.
-4. The `button_sizer` now includes a call to `AddStretchSpacer()`, which adds a spacer that expands to fill the remaining horizontal space, effectively pushing the "Number of Files Pasted" label and text control to the right side.
-5. The order of adding the widgets to the `button_s​​​​​​​​​​​​​​​​
+1. We create a separate instance of the `wx.StaticText` control for the "Download Path" label and store it in `self.download_path_label`.
+2. We bind the `wx.EVT_SET_FOCUS` event to the `self.download_path_label` control. This event is triggered when the control receives focus.
+3. In the `on_set_focus` event handler, we add custom code to handle the focus event. In this example, we change the font weight of the label to bold when it receives focus.
+4. After handling the focus event, we call `event.Skip()` to propagate the event to the next handler in the event processing chain.
+
+With these changes, when you press the Tab key to navigate through the controls in your GUI, the focus will be set on the "Download Path" label. You can customize the `on_set_focus` method to add your desired behavior, such as changing the label's font, color, or adding visual indicators to show that the label has focus.
+
+Note that static text controls don't show a visible focus indicator by default, but you can add your own visual cues in the `on_set_focus` method to indicate that the label has focus.​​​​​​​​​​​​​​​​
