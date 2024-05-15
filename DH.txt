@@ -1,58 +1,28 @@
-In wxPython, the focus is typically set on controls that can receive user input, such as text controls or buttons. However, you can still set the focus on static text controls, although they won't show a visible focus indicator by default.
+- When you generally work on Projects in you Undergrad, It is like you are building it for Yourself and the Professor you'll be showing it to. But when you are working on projects that could be potentially be used by many people. You become very entitled to the Problems pertaining it so if there is any issues that originates with the user it's your responsibility to solve it.
+- In our Team we Particularly had 1 Person per project so I was directly responsible for the whole phase which is
+    - Discovery : In which you get to know the Pain Points of the users on their particular tasks with a directly conversation.
+    - Design : Documents on how we would approach the problem or issues at hand and listing down the requirements for that project.
+    - Build : Actual Development of the Projects.
+    - UAT : Testing which we Submit to the Users so they can see our tool and report any issues for it.
+    - Production : Final Delivery of the Project to the Users.
+- Projects that I Worked On :
+- DET_FSOBFO_6
+    - Ram assigned us a task to Build a simple Command Line Application for a Recurring Deposit Calculator that takes in 3 Inputs :
+        - Principal Amount
+        - Interest Rate (Annual)
+        - Tenure
+    - Then by a very Simple Formula to Calculate :
+        - Recurring Deposit that is gonna be paid by the user for each month.
+        - Maturity Amount
+        - Total Yield which is just the Principal Amount - Maturity Amount
+- Loan Amortisation Calculator (Python) : Python was the easiest to build as I was already experienced with Tkinter and it wasn't difficult to configure as I already had core run process of the Calculator built.
+- Loan Amortisation Calculator (VBA) : VBA was also wasn't too difficult as I already knew the Logic of the Code from previous iterations and I just had to replicate that using Visual Basic Syntax. The only difficulty that I faced was using was printing the Schedule into a Excel Sheet as I had to Interact with the Sheet using Range Selectors which was a bit of a challenge.
+- Django Project
+- Storage Scan Utility
+- DET_INM_01 - Harmeet Kaur : Compare Tool Uitlity
+- DET_ALCM_79A - UAT Testing
+- DET_RR_24 - Nagarajan Project : OPR_BAU_Automation
+- DET_FSOALCM_13 - Gaurav Sharma : GUI
+- HKMA Behaviorlisation
 
-To set the focus on a static text control, you can use the `SetFocus` method provided by the `wx.Window` class, which is the base class for all wxPython widgets.
-
-Here's an example of how you can modify your code to set the focus on the "Download Path" label when the user presses the Tab key:
-
-```python
-import wx
-
-class MainFrame(wx.Frame):
-    def __init__(self):
-        super().__init__(parent=None, title="HSS Monthly Activity")
-        self.SetSize(800, 600)
-
-        panel = wx.Panel(self)
-        main_sizer = wx.BoxSizer(wx.VERTICAL)
-
-        # ... (Your existing code for header, download path, buttons, and footer)
-
-        self.download_path_label = wx.StaticText(panel, label="Download Path:")
-        self.download_path_label.Bind(wx.EVT_SET_FOCUS, self.on_set_focus)
-
-        download_path_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        download_path_sizer.Add(self.download_path_label, 0, wx.ALL, 5)
-        download_path_sizer.Add(self.download_path_text, 1, wx.EXPAND | wx.ALL, 5)
-        download_path_sizer.Add(download_path_button, 0, wx.ALL, 5)
-
-        # ... (Rest of your code)
-
-        panel.SetSizer(main_sizer)
-
-    def on_set_focus(self, event):
-        # Add your custom focus handling code here
-        # For example, you can change the label's font or color
-        font = self.download_path_label.GetFont()
-        font.SetWeight(wx.FONTWEIGHT_BOLD)
-        self.download_path_label.SetFont(font)
-        event.Skip()
-
-    # ... (Rest of your methods)
-
-if __name__ == "__main__":
-    app = wx.App()
-    frame = MainFrame()
-    frame.Show()
-    app.MainLoop()
-```
-
-In this modified code:
-
-1. We create a separate instance of the `wx.StaticText` control for the "Download Path" label and store it in `self.download_path_label`.
-2. We bind the `wx.EVT_SET_FOCUS` event to the `self.download_path_label` control. This event is triggered when the control receives focus.
-3. In the `on_set_focus` event handler, we add custom code to handle the focus event. In this example, we change the font weight of the label to bold when it receives focus.
-4. After handling the focus event, we call `event.Skip()` to propagate the event to the next handler in the event processing chain.
-
-With these changes, when you press the Tab key to navigate through the controls in your GUI, the focus will be set on the "Download Path" label. You can customize the `on_set_focus` method to add your desired behavior, such as changing the label's font, color, or adding visual indicators to show that the label has focus.
-
-Note that static text controls don't show a visible focus indicator by default, but you can add your own visual cues in the `on_set_focus` method to indicate that the label has focus.​​​​​​​​​​​​​​​​
+- HSBC has definetly exceeded the Expectations for me. Now, It's definitely a huge change when you are straight out of college thrown out in these corporate environments, and You have this dreaded feeling of these how the corporate lifestyle is gonna be as I have definitely heard the Stories of Beauracracy and Work Life that make you tremble but I think starting with HSBC has been very good checkpoint for me and I have got the chance to meet some fantastic leadership and collabrate with amazing people both at the Chennai Team and NCR Team. The 2 Key Things that I would highlight would be the Agile Working Methodology that HSBC particularly is practiced within all of HSBC but our Team is doing a better job at it and would be the Design Thinking Approach of doing Projects.
