@@ -1,28 +1,561 @@
-- When you generally work on Projects in you Undergrad, It is like you are building it for Yourself and the Professor you'll be showing it to. But when you are working on projects that could be potentially be used by many people. You become very entitled to the Problems pertaining it so if there is any issues that originates with the user it's your responsibility to solve it.
-- In our Team we Particularly had 1 Person per project so I was directly responsible for the whole phase which is
-    - Discovery : In which you get to know the Pain Points of the users on their particular tasks with a directly conversation.
-    - Design : Documents on how we would approach the problem or issues at hand and listing down the requirements for that project.
-    - Build : Actual Development of the Projects.
-    - UAT : Testing which we Submit to the Users so they can see our tool and report any issues for it.
-    - Production : Final Delivery of the Project to the Users.
-- Projects that I Worked On :
-- DET_FSOBFO_6
-    - Ram assigned us a task to Build a simple Command Line Application for a Recurring Deposit Calculator that takes in 3 Inputs :
-        - Principal Amount
-        - Interest Rate (Annual)
-        - Tenure
-    - Then by a very Simple Formula to Calculate :
-        - Recurring Deposit that is gonna be paid by the user for each month.
-        - Maturity Amount
-        - Total Yield which is just the Principal Amount - Maturity Amount
-- Loan Amortisation Calculator (Python) : Python was the easiest to build as I was already experienced with Tkinter and it wasn't difficult to configure as I already had core run process of the Calculator built.
-- Loan Amortisation Calculator (VBA) : VBA was also wasn't too difficult as I already knew the Logic of the Code from previous iterations and I just had to replicate that using Visual Basic Syntax. The only difficulty that I faced was using was printing the Schedule into a Excel Sheet as I had to Interact with the Sheet using Range Selectors which was a bit of a challenge.
-- Django Project
-- Storage Scan Utility
-- DET_INM_01 - Harmeet Kaur : Compare Tool Uitlity
-- DET_ALCM_79A - UAT Testing
-- DET_RR_24 - Nagarajan Project : OPR_BAU_Automation
-- DET_FSOALCM_13 - Gaurav Sharma : GUI
-- HKMA Behaviorlisation
+## Rules :
 
-- HSBC has definetly exceeded the Expectations for me. Now, It's definitely a huge change when you are straight out of college thrown out in these corporate environments, and You have this dreaded feeling of these how the corporate lifestyle is gonna be as I have definitely heard the Stories of Beauracracy and Work Life that make you tremble but I think starting with HSBC has been very good checkpoint for me and I have got the chance to meet some fantastic leadership and collabrate with amazing people both at the Chennai Team and NCR Team. The 2 Key Things that I would highlight would be the Agile Working Methodology that HSBC particularly is practiced within all of HSBC but our Team is doing a better job at it and would be the Design Thinking Approach of doing Projects.
+- Never Interrupt Them during the Interview (If they ask a Question - Answer the Question)
+- Avoid Blank Spaces during the Conversation.
+- Always ask for a minute to think about the answer and search on google.
+
+## Introduction :
+
+Hello Sir/Ma’am,
+Good Afternoon Ma’am. It gives me great pleasure to have this conversation with you. My name is Antrang Agrawal, and I hail from the city of Ajmer, Rajasthan though I am currently living in Gurugram. I am currently a 4th Year Student at VIT studying Computer Science and Engineering.
+
+I am excited about the role at your organisation because it gives me  the opportunity to combine my technical acumen with my passion for finance and analytics. The tasks related to the role provided (As in the JD)  aligns perfectly what I have learnt and what I want to specialise in the future. I have strong experience in tools like SQL, Python, C++, Pandas, NumPy, Sckit-Learn, Streamlit and Beginner Level Experience in PySpark, Google BigQuery and Others ,which I believe will be valuable assets for the required job. Along with that i have accumulated non technical skills such as research, communication and strategy skills which i have garnered through my work experience having worked at organisations like National University of Singapore, Hewlett Packard Entreprise and Abhyaz. I have used my analytical skills to  write blogs and give presentation on these topics where I bridge data analytics with real world scenarios. One article showcased Analysis Sports Betting in India while I wrote one discussing the environmental impact of Large Language Models.
+
+Also I played a pivotal role in the Codechef VIT Research Department, working on Qiskit for quantum programming and contributing to Organising Events, Discord Bot Development and Sponsorships. 
+
+Apart from these interests,
+
+I am an active member of VIT's "Smile Over Stress" and the "5th Pillar NGO," leading the organization of numerous impactful events focused on Mental Health and Social service. I am an avid reader of Fictional Books and Comics. I love long distance running as well which really helps me mentally and physically. When I'm not sweating around in the fields, you'll often find me at the movies or binging TV shows. Most recently, I completed the series "Succession," which impacted my perspective on matters of wealth, power, and decision-making. 
+
+Thank you for letting me Introduce Myself.
+
+---
+
+## About the Company :
+
+RapidX - Fastest Charging Batteries (2000, 8000, 12000, 15000) 
+
+Entering Different Kinds of Markets Commercial Mobility, Industrial Mobility, 
+
+Green Manufacturing (Economical and Sustainable through your Batter and Cell Manufacturing Process
+
+AFC (Aluminium Fuel Cells)
+
+Nanocaps (3V ultracapicators)
+
+Built for any kind of Climate from -40 Degree Celsius to +65 Degree Celsius
+
+---
+
+---
+
+## About the Role :
+
+- As I read in Job Description and got some insights through my Interviews with Suyash Sir.
+- Technical Skill Set Required for this Job.
+- What I will be responsible for which is creating End to End Data Pipelines for the Log9 Ecosystem.
+- It can include Data Cleaning, Data Transformation, Exploratory Data Analysis, Modelling and Evaluation and then presenting them visually for the Customer as well as higher management so that they can take decision based on these reports accordingly.
+
+---
+
+## HPE Internship Experience :
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/0b6be207-3100-4218-b40c-2b323bbefa41/4348496a-4d8b-4149-8b68-3ed1ca38e7a1/Untitled.png)
+
+**During my academic internship at Hewlett-Packard Enterprise in Singapore in January 2023, I had the valuable opportunity to immerse myself in a dynamic and intellectually stimulating environment.** 
+
+**In the Internship we were given a lot of lectures on topics of Big Data, Machine Learning and specifically Microsoft Azure. Dataset provided to use was the Graduate Record Examinations Dataset. The Reason for the Dataset was that the focus was not too much on the dataset it was more about learning the tools used for in Creating Data Pipelines.**
+
+**GOAL :** 
+
+- **Goal was to create a Data Pipeline Graduate Record Examinations Dataset**
+- **Try to Predict the Chance of Admit based on the Features Provided.**
+- **Create a Dashboard for the Same.**
+
+**Data Pipelines Consisted of 5 Main Services of Azure : (Now these services are Interconnected which means that the functions of any of these service can be done by other service too.**
+
+- Azure Data Factory
+- Azure Data Lake Gen 2
+- Azure Data-bricks
+- Azure Synapse Analytics
+
+**We were provided the Dataset in 3 Formats :**
+
+- CSV File hosted on a HTTP SERVER
+
+**There were 5 Tables in the Dataset in** 
+
+(**PostGresSQL, CSV Files, API (JSON Format))**
+
+- Scores :
+    - Student_ID
+    - Type of English Test
+        - TOEFL
+        - IELTS
+        - TOEIC
+    - English Score
+    - GRE Score
+    - SOP Rating
+    - LOR Rating
+- Students
+    - Student_ID
+    - FirstName
+    - LastName
+    - Country of Origin
+    - Gender
+        - Male
+        - Female
+    - Chance of Admit
+- StudentGrades
+    - Student_ID
+    - 10th Score
+    - 12th Score
+    - Undergrad GPA
+- WorkExperience
+    - Student_ID
+    - Number of Internships (Count)
+    - Number of Publications (Count)
+- UniversityInfo
+    - Student_ID
+    - University Type
+        - Public
+        - Private
+    - Undergraduate School Ranking
+    - Undergraduate School Location
+
+## Store (Azure Data Lake Storage) :
+
+- In Storage Accounts we Created 1 Containers with 5 Folders
+    - Raw-Data
+    - Cleaned-Data
+    - Transformed-Data
+    - Train Data
+    - Test Data
+
+## Data Ingestion and Orchestration (Azure Data Factory)
+
+- Create a Linked Service for your HTTP Server. Configure it with connection details like server address, database name, username, password, etc.
+- Create another Linked Service for your Azure Data Lake Storage Gen2. Provide details like storage account name, container/folder, and authentication method.
+- Create a Pipeline - Go to Author Tab and Create a Pipeline with New Pipeline Button.
+- Add Activities to the Pipeline :
+    - Copy Data Activity
+    - Source Dataset (HTTP URL)
+    - Sink Dataset
+    - Ensure Column Names of Both Match
+    - Publish and Debug
+
+## Prepare, Transform and Enrich (Azure Data-bricks) :
+
+- Create a Cluster of Virtual Machines that can process my Data
+- To load data from Azure Data Lake Storage Gen2 into your Data-bricks environment, you'll need to mount your storage account to your Data-bricks workspace. Then we Mounted the Database in Data-bricks
+- Once the Database is Mounted we can of-course access through /mnt/<your-mount-name>
+- RDD was the primary user-facing API in Spark since its inception. At the core, an RDD is an immutable distributed collection of elements of your data, partitioned across nodes in your cluster that can be operated in parallel with a low-level API that offers *transformations*and *actions*.
+- Using PySpark SQL we combined all the features into one Single PySpark Dataframe.
+- **Data Cleaning -**
+    - Identify Missing Values
+    - Compatibility Checks
+    - Handling Univariate Outliers for Each Feature (GRE Score, LOR, Research…)
+    - Handling Multivariate Outliers for Each Feature
+    - Data Describing Techniques
+- **After This : We Write this Cleaned Data into the Data Lake Storage into the Container we created earlier called the Cleaned Data.**
+- **Data Visualisation using Matplotlib** - Lot of Graphs
+    - Correlation Matrix
+    - Aggregations Graphs
+        - Max
+        - Min
+        - Averages
+- **Feature Engineering**
+    - Numerical Variables
+        - Normaliser
+        - StandardScaler
+        - MinMaxScaler
+        - MaxAbsScaler
+    - Categorical Variables
+        - StringIndexer
+        - IndexToString
+        - VectorIndexer
+- **After this : We write this Transformed Data into the Data Storage Lake Container Train and Test Data.**
+- **Summary(GRE**) which will calculate the Minimum, 1st Quartile, 2nd Quartile, 3rd Quartile, Maximum, Mean for each of the fields.
+- Train and Test Split
+- **After this : We write this Train and Test into the Data Storage Lake Container Evaluation**
+- Then we used the PySpark ML Lib the Dataset on 3 Particular Algorithms
+    - Linear Regression
+    - Logistic Regression
+    - Decision Tree
+    - Random Forest
+- I Tried Hyperparameter Tuning Methods :
+    - Grid Search
+- Cross Validation
+    - KFolding (Subsets are trained and tested)
+
+I also tried turning it into a Classification Problem so if the Chance of Admit is greater than 0.8 then it is Yes Otherwise No.
+
+- Metrics :
+    - AUC Curve - 0.92099
+    - Accuracy - 0.94
+    - Classification Error - 0.06
+
+## Serve the Data (Azure Synapse Analytics) :
+
+- We create a Synapse Workspace
+- We Create Linked Services again to the Data Storage Gen Lake 2.
+- We Had to Follow the Similar Process of Copy Data Activities from Azure Data Factory.
+- We Then Wrote SQL Scripts to get specific Insights we need from the Data.
+
+---
+
+## Singapore Internship Experience :
+
+- Brain tumours are masses that arise as a result of irregular brain cell proliferation and the loss of the brain's regulatory systems. However, the detection and segmentation of tumours based on imaging and human interpretation is challenging, as tumors can have a mixture of low-grade and high-grade characteristics.
+
+- Goals of these : The objective is to precisely segment each of these regions in the image and give the proper label to each pixel in the segmentation map when generating predictions using a trained model.
+
+- The multimodal Brain Tumor Segmentation Challenge 2020 dataset (BraTS 2020) has been used for this research.
+- 3 different MRI modalities are included for each patient in the dataset
+- Manually segmented region of interest (ROI).
+
+- **Dataset Description** : The BraTS dataset is a benchmark dataset for BT detection algorithms assessment and is frequently utilised in the research community. The collection contains MRI images using several modalities, including fluid-attenuated inversion recovery (FLAIR), T2-weighted, and T1-weighted with contrast. There are Various MRI Image Formats like DICOM and NIFTI. There were 369 3D MRI Images for Training and 125 MRI Images for Testing.
+    - T1, T2 and Flair - There isn’t much difference except they highlight different parts of the Brain Depending on the Intensities of Signal that is Being Projected such as Fluid(Black), Muscle(Grey) and Fat(White) and Brain (Grey Matter and White Matter).
+    
+- **Pre-Processing** -
+    - Resampling them to Same Resolution (256*256*1)
+    - Standardisation
+    - Removing Noises
+    - Tilt Correction (Axis)
+    - Slice is then Normalised and Resized to 240x240.
+
+- 4 Classes
+    - 0 : Not Tumour
+    - 1 : Necrotic/Core - It designates areas of the image that have necrotic or non-enhancing core tumors, which are frequently linked to a high degree of cell death and a poor prognosis.
+    - 2 : Edema - Edema, a buildup of fluid in the brain that can result in swelling and pressure,
+    - 3 : Enhancing - Regions in the image that have enhancing tumors are referred microvasculature.
+    
+- **Data Preparation** -
+    - Divide the data into training, validation, and testing sets as part of the data preparation process. The training set, validation set, and testing sets may all be used to train the model, fine-tune its hyper-parameters, and assess the model’s effectiveness;
+    
+- Features that Can be Extracted :
+    - Textural Features
+    - Image Intensity Features
+    - Gradient Features
+    - Morphological Features
+    
+- Model Choice : CNN’s are mostly they best at this Task. ResNet or VGG16.
+- Why U-Net ?
+    - Components of U-Net Architecture : The contracting path is a sequence of convolutional and max pooling layers that downsample the input image and extract features from it. The convolutional layers apply a set of filters to the input image and generate feature maps, while the max pooling layers downsample the feature maps by taking the maximum value within a window of pixels.
+        
+        The final segmentation map is created by upsampling the feature maps from the contracting path and combining them with the features from the input image in the expanding path, which is a series of convolutional and upsampling layers.
+        
+        U-Net was originally designed with Medical Segmentation in Mind so it is very well-suited for Image Segmentation Tasks.
+        
+        UNet uses skip connections, which allow the model to incorporate high-level and low-level features from the input image.
+        
+        UNet is a CNN Model with much more amount of Parameters which can be seen as an advantage or disadvantage based on if more complexity is better or worse.
+        
+    - Components of U-Net Architecture : The contracting path is a sequence of convolutional and max pooling layers that downsample the input image and extract features from it. The convolutional layers apply a set of filters to the input image and generate feature maps, while the max pooling layers downsample the feature maps by taking the maximum value within a window of pixels.
+    - The final segmentation map is created by upsampling the feature maps from the contracting path and combining them with the features from the input image in the expanding path, which is a series of convolutional and upsampling layers.
+
+- **Model Training** : Train the chosen model using the training set of data. To evaluate the model’s performance, one must select a loss function, an optimiser, and a measure
+- Several pairs of convolutional layers make up the architecture of the network, which is then followed by layers that activate ReLU and use max-pooling. A tensor of 128 × 128 × 2 is the network’s input. As the network becomes deeper, the Conv2D layers include more filters. To avoid overfitting, a dropout layer with a rate of 0.2 is added after the final Conv2D layer. After that, a succession of up-sampling, concatenation, and Conv2D layers are added to boost the features’ resolution. A Conv2D layer with four filters and a softmax activation function forms the final layer, which results in a segmentation map with four classes.
+- The Conv2D layers apply a set of filters to the input and are used to learn the features of the input. The activation function for the Conv2D layers is the ReLU, which helps to introduce nonlinearity into the model. The MaxPooling2D layers perform downsampling by taking the maximum value in a pooling window, reducing the spatial dimension of the data, and retaining the most important features.
+- The Model was Trained on Adam Optimiser and the Loss Function was Categorical Cross Entropy.
+- Fine-tuning of the hyper-parameters: Use the validation set to adjust the model’s hyper-parameters.
+- Hyper parameter tuning involves systematically varying the hyper parameters and evaluating the resulting performance of the model. This process helps to find the best combination of hyper parameters that optimise the model’s performance.
+
+Model evaluation: Examine how well the model performed on the testing set. The performance may be assessed using measures such as the dice coefficient, Jaccard index, or IoU.
+
+Then we Made the Classification Matrix for TP, FP, TN, FN.
+
+**Hyper-parameter Tuning Meaning** - The number of epochs is a hyper-parameter that determines the number of times the full training dataset is run through the model during training. The objective is to train the model until it has absorbed enough information from the data and to prevent overfitting. Fine-tuning these hyper-parameters is crucial for achieving the high performance and generalisation ability of the model. Additionally, adjusting these values can also help to optimise the model’s training time and memory consumption.
+
+Batch Size and Epochs
+
+This is a Stochastic Prediction meaning the Final Answer will Come in Probabilities of the 4 classes. If a class has a probability of more than 60-70% we assigned the label of 1 to that particular class.
+
+Determinstic Predictions : Produce a Single Output 
+
+Metrics :
+
+**Accuracy** : The accuracy metric is one of the simplest Classification metrics to implement, and it can be determined as the number of correct predictions to the total number of predictions.
+
+Confusion Matrix : A confusion matrix is a tabular representation of prediction outcomes of any binary classifier, which is used to describe the performance of the classification model on a set of test data when true values are known.
+
+Precision :
+
+The precision determines the proportion of positive prediction that was actually correct. (TP/(TP+FP)
+
+Specificity :  It is the Number  TN/(TN+FP)
+
+Sensitivity or Recall : It aims to calculate the Proportion that was identified incorrectly. (TP/(TP + FN)
+
+Specificity and Sensitivity are Inversely Related
+
+F1 Score : F1 Score is a metric to evaluate a binary classification model on the basis of predictions that are made for the positive class. It is calculated with the help of Precision and Recall.
+
+F1 Score = 2*(precision*recall)(precision+recall)
+
+Recall :
+
+Dice Coefficient :
+
+Jaccard Index (IOU)
+
+Loss Function
+
+Activation Function
+
+Dice Coeff (Necrotic)
+
+Dice Coeff(Edema)
+
+Dice Coeff(Enhancing)
+
+- **Bias** : In simple words, neural network bias can be defined as the constant which is added to the product of features and weights. It is used to offset the result. It helps the models to shift the activation function towards the positive or negative side.
+- **Dice Coeff** : The Dice coefficient can be used to compare the pixel-wise agreement between a predicted segmentation and its corresponding ground truth.Dice coefficient is 2 times The area of Overlap divided by the total number of pixels in both the images
+- **Underfitting** is a scenario in data science where a data model is unable to capture the relationship between the input and output variables accurately, generating a high error rate on both the training set and unseen data.
+- **Overfitting** : occurs when a model becomes too complex and learns to fit the training data too closely, resulting in poor generalisation to new data.
+- Loss is a scalar variable used in ML to represent the discrepancy between the output that was produced and what was anticipated.
+- The categorical cross-entropy loss function is used in this model for multi-class classification problems when the output is a probability distribution across several classes. Categorical Cross Entropy is also known as Softmax Loss. It’s a softmax activation plus a Cross-Entropy loss used for multiclass classification. Using this loss, we can train a Convolutional Neural Network to output a probability over the N classes for each image.
+- In multiclass classification, the raw outputs of the neural network are passed through the softmax activation, which then outputs a vector of predicted probabilities over the input classes.
+- In the specific (and usual) case of multi-class classification, the labels are one-hot, so only the positive class keeps its term in the loss. There is only one element of the target vector, different than zero. Discarding the elements of the summation which are zero due to target labels, we can write:
+- Activation Function : Makes the Values between 0 and 1.
+
+## Abhyaz :
+
+Customer relationship management (CRM) is a process in which a business or other organization administers its interactions with customers, typically using data analysis to study large amounts of information.
+
+- Customer lifecycle optimisations: Refers to the customer's journey. It starts from the time of contacting the company. Initial points of contact: registration process, social media post etc.
+- Internal and External Communications: Language, colour, images, campaigns
+- Customer acquisition
+- Customer retention (abandonment/churn)
+- Cross-sell, up-sell
+- Customer segmentation studies: These are strategy development studies by dividing customers into groups.
+
+## Goals : An e-commerce company wants to segment its customers and determine marketing strategies according to these segments  Then we use to Predict the Number of Transactions and Expected Average Profit.
+
+- Data Consolidation - I had a few Spreadsheets indicating different type of Related Data. I had to Join and Merge the Dataset accordingly.
+- KPK - Customer Acquisition Rate, Customer Retention Rate, Customer Churn Rat and Conversion Rate.
+- Cohort analysis is a type of behavioural analytics that separates the data in a data set into comparable groups before analysis. These units, or cohorts, are usually characterised by similar qualities or events over a specific timespan.
+- Analysis of a customer's (or user's) behavior across the lifecycle might reveal important trends. By breaking down customers into smaller groups, you can better see patterns throughout each customer's life cycle rather than just looking at all clients uniformly without regard for the natural cycle that a client goes through.
+
+**Variables :** 
+
+- **InvoiceNo:** Invoice number that consists 6 digits. If this code starts with letter 'c', it indicates a cancellation.
+- **StockCode:** Product code that consists 5 digits.
+- **Description:** Product name.
+- **Quantity:** The quantities of each product per transaction.
+- **InvoiceDate:** Represents the day and time when each transaction was generated.
+- **UnitPrice:** Product price per unit.
+- **CustomerID:** Customer number that consists 5 digits. Each customer has a unique customer ID
+- **Country:** Name of the country where each customer resides.
+- State
+- Country
+
+## Data Cleaning :
+
+Certainly! Here are 20 common data preprocessing methods you can use in Zoho DataPrep to prepare your sales data for analysis:
+
+1. **Data Cleaning:**
+    - Remove duplicate rows.
+    - Handle missing data (e.g., fill missing values with averages or zeros).
+    - Filter out outliers.
+    - Standardize column names (e.g., convert to lowercase and remove spaces).
+2. **Data Transformation:**
+    - Convert data types (e.g., change text to numbers).
+    - Normalize numerical values (e.g., scaling values between 0 and 1).
+    - Encode categorical variables (e.g., one-hot encoding for product categories).
+    - Create calculated columns (e.g., Total Sales = Quantity * Price).
+3. **Data Aggregation:**
+    - Group data by specific columns (e.g., group by date).
+    - Aggregate data (e.g., sum total sales per product).
+    - Pivot data to change its structure.
+4. **Data Filtering:**
+    - Filter rows based on specific criteria (e.g., sales in a particular date range).
+    - Remove irrelevant columns.
+5. **Data Joining:**
+    - Join multiple datasets based on common keys (e.g., join sales data with customer data).
+6. **Data Splitting:**
+    - Split columns into multiple columns (e.g., split a full name into first name and last name).
+    - Split data into training and testing sets for machine learning.
+7. **Data Sampling:**
+    - Randomly sample a subset of your data for testing or exploration.
+8. **Data Deduplication:**
+    - Identify and remove duplicate rows based on specific columns.
+9. **Data Sorting:**
+    - Sort data based on one or more columns (e.g., sort sales data by date).
+10. **Data Reshaping:**
+    - Reshape data from wide to long format or vice versa.
+
+## Customer Relationship Management using RFM
+
+The RFM method is a tool for assessing consumer value. It's frequently utilised in database marketing and direct marketing, as well as retail and professional services.
+
+“80% Business Comes From 20% of Your Customers”
+
+- **Recency:** How recently did the customer purchase?
+- **Frequency:** How often do they purchase?
+- **Monetary Value:** How much do they spend?
+
+Then Divide Into These 8 For The Same :
+
+Hibernating
+
+Loyal Customers
+
+Champions
+
+at_Risk
+
+Potential Loyalists
+
+About to Sleep
+
+New Customers
+
+Can’t Loose Customers
+
+## Customer Lifetime Value (CLTV) :
+
+Customer lifetime value (CLV), a term sometimes used interchangeably with customer lifetime value, is the prediction of a company's net profit contributed to its overall future relationship with a customer. The model can be simple or sophisticated, depending on how complex the predictive analytics techniques are.
+
+Lifetime value is a critical metric because it represents the maximum amount that customers may be expected to spend in order to acquire new ones. As a result, it's crucial in determining the payback of marketing expenses used in marketing mix modeling.
+
+- **recency**: the difference between the customer's last purchase and his first purchase
+- **T**: the age of the client in the company
+- **frequency**: total number of repeat purchases
+- **monetary_value**: average earnings per purchase
+
+CLTV = Expected Number of Transaction * Expected Average Profit
+
+Beta Geometric / Negative Binomial Distribution known as BG-NBD Model. Also sometimes it comes up as “Buy Till You Die”. It gives us the conditional expected number of transactions in the next period. This model can answer the following questions.
+
+Gamma-Gamma Submodel will model the expected average profit distribution and will predict the expected average profit for each customer.
+
+## BG-NBD Model
+
+This model models 2 processes by using probability for predicting the expected number of transactions
+
+- Transaction Process (Buy)
+- Dropout Process (Till You Die)
+
+**Transaction Process (Buy)**
+
+- We use this for indicating the purchase process
+- During the customer is alive, the number of will have made by the customer, will be distributed poison by transaction rate parameter
+- During the customer is alive, they will be purchasing around their own transaction rate
+- Transaction rates will change for each customer and they will be distributed gamma (r,α)
+
+**Dropout Process (Till You Die)**
+
+- It means dropping purchasing
+- Each customer has their own dropout rate by p probability
+- The customer will be a dropout by p probability
+- Dropout rates will change for each customer and they will be distributed beta (a,b) for the mass
+
+## Gamma - Gamma Submodel :
+
+It will output the Expected Average Profit. This means; The Expected Average Profit distribution will be modeled over the whole audience, and the Gamma Gamma Submodel will be conditionally giving us the Expected Average Profit for a person, taking into account the distribution of the whole audience, according to the characteristics of the person himself.
+
+- A customer’s monetary value (the sum of a customer’s transaction amounts) will be random distributed around the average of its transaction values
+- An average transaction value can change in periods between the customers but it's not changing for a customer
+- The average transaction value will be distributed gamma between all customers
+
+## Projects
+
+### Reward Detection using 3D Human Pose Detection and Classification
+
+**3D Human Pose Estimation is a computer vision task that involves estimating the 3D positions and orientations of body joints and bones from 2D images or videos. The goal is to reconstruct the 3D pose of a person in real-time, which can be used in a variety of applications, such as virtual reality, human-computer interaction, and motion analysis.**
+
+I use Media Pose API which is a Computer Vision Library by Google which relies on the GHUM Model Heavy Convonutional Neural Network. It has 33 Points on the Body it Marks to gain data points and angles between human joints and Bones
+
+2D Pose Estimation
+
+Pre-Processing
+
+Feature Extraction
+
+Pose Initialization
+
+Angles
+
+In these we have Track 3 Things, The Player, The Ball and The Goal Post. 
+
+We Have take into consideration the edges of the Goal Post which was the most difficult task as these videos are from Open Source Datasets and the video quality is not always up to the mark. 
+
+In the end we also had to check for 90 degree angles.
+
+We had to make Wireframes in Both 2
+
+We ended up acheiving an accuracy of about 71 percent which was the highest we can gather. It was lot dependent on the dataset it was trained on.As we ran it in a local machine we couldn’t use very high quality videos as the training time would be massive. Each epoch was taking arounnd 20 minutes to run.
+
+### Reproducible Machine Learning Models with R Implementation
+
+Credit Cards Have Made Innternet Transactions Simple, Pleasant and Convenient.
+
+This mainly involved building machine learning models for Credit Card Fraud Detection which can reproduced and reused during an actual case scenerio.
+
+We Tested Logistic Regression, 
+
+XGBoost which is a Gradient Boost Algorithim was the Best in the End
+
+Credit cards have become a common way to pay online, benefiting people globally. However, this convenience has also led to a surge in credit card fraud, causing significant financial losses for businesses and individuals. Hackers are continuously finding new ways to commit fraud, making it crucial to develop effective and adaptable methods for detecting fraudulent activities.
+
+This study focuses on recent approaches to detect credit card fraud using machine learning and nature-inspired techniques. It provides an overview of the current advancements in fraud detection and discusses the strengths and weaknesses of existing methods. The aim is to equip researchers in this field with essential knowledge and offer guidance for further progress.
+
+Over the past decade, the evolution of payment card fraud detection has centered on machine learning-based strategies. These approaches automate the identification of fraudulent patterns from large volumes of data, addressing the evolving challenges posed by fraudsters.
+
+### Travelling Salesman Problem :
+
+Travelling Salesman Problem is technically an Optimization Problem where basic premise is that given given a List of Cities and The Distances Between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city.
+
+Dynamic Programming - Solve Question on Leetcode 
+
+This is one of the Projects 
+
+Reinforcement Learning (RL) is biggest hype right now . One of the Biggest Players Currently is Deepmind which is Google Owned Company which have accomplished some teremendous feats using it . AlphaGo which beat a Go Grandmaster and using the same engine in on various other games like chess, checkers etc.
+
+Agent - Actions - States - Envrionment
+
+Agent — Action O Enrionment — which instills a reward for the O Agent — and also moves it into the next state and this action-reward feedback loop continues.
+
+Q Learning is a commonly used model-free approach. It revolves around the notion of updating Q values which denotes value of performing action a in state s. The following value update rule is the core of the Q Learning Algorithim. It is a Algorithim which thinks more in the long term about each decesion it has to make.
+
+https://towardsdatascience.com/reinforcement-learning-101-e24b50e1d292
+
+https://ekimetrics.github.io/blog/2021/11/03/tsp/
+
+### Intrusion Detection System using Machine Learning Algorithims :
+
+Intrusion Detection System is a Software Application to Detect Network Intrusions using various Machine Learning Algorihthims. IDS monitors a network or system for malicious acitivity and protects a computer network from unauthorized access from users, including perhaps insider. The Intrusion Detection Learning Task is to build a predictive model capable of distinguishing between “bad connections” (intrusions/attacks) and “good connections”.
+
+Attacks Fall Into These Cateogries
+
+- DOS
+- R2L
+- U2R
+- Probing
+
+Dataset was a KDD Cup 1999 Dataset whcih has a lot of features such as duration in seconds, protocol_type (tcp,udp), service (http,telnet), src_bytes, dst_bytes, flag,count (the number of connections to the same host in past 2 seconds) etc. Some of which were Discrete Values and Some which were Continious values.
+
+Steps :
+
+Reading the Dataset
+
+Finding an NULL or Missing Values of Features 
+
+Finding Cateogrical Fatures which in this case were (”Service”, “Flag”, “Protocol_Type”) (It is Different from Numeric)
+
+Find the Highly Correlated Variable using a Heatmap and Ignore them during the analysis (”Out of the Total Count Connections serror_rate is % of connections that have “SYN” errors”)
+
+(Heatmap as light they are they are much more correlated so that’s why we see a line through a middle because a feature will be fully correlated with itself.)
+
+Apply Feature Maping on Features such as Protocol Type and Flag which basically maps each cateogrical value to a number such as (Protocol Type will be Map to 0,1,2)
+
+Remove irrelevant features such as service before modelling
+
+Then I used Sckit Learn and divided it into 2 parts train and test data.
+
+Logistic Regression, Support Vector Machine, Random Forest, Gradient Boost
+
+Choose a Model Based on the Accuracy Metrics
+
+https://www.kaggle.com/code/antrangagrawal/intrusion-detection-system-using-machine-learning/edit
+
+## Do You Have Any Questions ?
+
+So I recently read a article which states sustaniablity acrosss LLM (Large Langauge Models) which discusses sustainablity solutions for them. So as you recently there’s been a hype on these tools and models. Is [Daaslabs.ai](http://Daaslabs.ai) working  on solutions that can These Models better ?
+
+So I recently read about Bloomberg GPT which consolidates all the Financial Documents and Data it has from decades and trained a Large Language Model to develop a Bloomberg GPT. HSBC with it’s rich history of providing Financial Services. Does it right now or in the future have plans to work in these technologies ?
+
+What specific applications or industries are your graphene-based technologies targeting, and what advantages does graphene offer in those applications compared to traditional materials or technologies?
+
+What would be your feedback on my Interview Currently ?
