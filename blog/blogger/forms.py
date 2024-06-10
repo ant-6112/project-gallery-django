@@ -37,13 +37,13 @@ class FormDy(forms.ModelForm):
     class Meta:
         model = field
         fields = (
-            'fieldname','fieldtype'
+            'fieldname','fieldtype','projectForm'
         )
         widgets = {
             'fieldname': forms.TextInput(attrs={'class' : 'form-control'}),
-            'fieldtype': forms.TextInput(attrs={'class' : 'form-control'})
+            'fieldtype': forms.TextInput(attrs={'class' : 'form-control'}),
+            'projectForm': forms.Select(attrs={'class': 'form-control'})
         }
-
 
 class DynamicForm(forms.Form):
     def __init__(self, *args, **kwargs):

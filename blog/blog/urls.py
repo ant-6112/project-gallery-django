@@ -21,8 +21,7 @@ from blogger import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('create-form/', views.create_field,name='create-field'),
+    path('create-form/', views.create_field,name='create_field'),
     path('create-form-object/',views.create_form,name="create-form-object"),
-    #path('form_creator/', views.form_creator, name='form_creator'),
-    path('form/<int:form_id>/', views.form_page, name='form_page'),
+    path('form/<str:name>/', views.form_page, name='form_page'),
 ]

@@ -9,10 +9,11 @@
     <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
 
 </head>
-<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+<body>
     <div class="container mt-5">
         {% csrf_token %}
-        <form>
+        <form method="post">
+            {% csrf_token %}
             <div class="col-4 col-md-3">
                 <label for="{{form.name.id_for_label}}">{{form.name.label}}</label>
                 {{form.name}}
