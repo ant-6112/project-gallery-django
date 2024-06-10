@@ -51,3 +51,44 @@ class Mywin(wx.Frame):
 app = wx.App() 
 Mywin(None, 'Find and Replace in XML') 
 app.MainLoop() 
+
+# Load assemblies
+Add-Type -AssemblyName PresentationFramework,System.Windows.Forms
+
+# Create XAML markup for the UI
+$xaml = @"
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        Title="Directory Size Checker" Height="350" Width="525">
+    <Grid>
+        <Label Content="Directory Path:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtDirectoryPath" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Minimum Size (MB):" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtMinSize" HorizontalAlignment="Left" Height="23" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DataGrid Name="dataGrid" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="200" Width="300">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Column1" Width="*"/>
+                <DataGridTextColumn Header="Column2" Width="*"/>
+                <DataGridTextColumn Header="Column3" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
+"@
+
+# Parse the XAML
+$reader=(New-Object System.Xml.XmlNodeReader $xaml)
+$window=[Windows.Markup.XamlReader]::Load( $reader )
+
+# Get elements from the window
+$txtDirectoryPath = $window.FindName("txtDirectoryPath")
+$txtMinSize = $window.FindName("txtMinSize")
+$dataGrid = $window.FindName("dataGrid")
+
+# Add dummy data to the data grid
+for ($i=0; $i -lt 5; $i++) {
+    $dataGrid.Items.Add(@{"Column1"="Row $($i+1)"; "Column2"="Row $($i+1)"; "Column3"="Row $($i+1)"})
+}
+
+# Show the window
+$window.ShowDialog() | Out-Null
+
