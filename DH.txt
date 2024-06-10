@@ -1,90 +1,53 @@
-# progress/views.py
-import time
-from django.http import JsonResponse
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
-from .forms import UploadForm
+import os
+import zipfile
+import xml.etree.ElementTree as ET
+import wx
 
-def index(request):
-    form = UploadForm()
-    return render(request, 'progress/index.html', {'form': form})
+class Mywin(wx.Frame): 
+   def __init__(self, parent, title): 
+      super(Mywin, self).__init__(parent, title = title, size = (250,150)) 
+      panel = wx.Panel(self) 
+      box = wx.BoxSizer(wx.VERTICAL) 
 
-@csrf_exempt
-def upload_file(request):
-    if request.method == 'POST':
-        form = UploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            # Simulate a long-running task
-            for i in range(101):
-                time.sleep(0.1)  # Simulating work being done
-                # Update progress
-                request.session['progress'] = i
-            return JsonResponse({'status': 'completed'})
-    return JsonResponse({'status': 'failed'}, status=400)
+      self.path = wx.TextCtrl(panel) 
+      box.Add(self.path, flag = wx.EXPAND|wx.ALL, border = 10) 
 
-@csrf_exempt
-def progress(request):
-    progress = request.session.get('progress', 0)
-    return JsonResponse({'progress': progress})
+      self.find = wx.TextCtrl(panel) 
+      box.Add(self.find, flag = wx.EXPAND|wx.ALL, border = 10) 
 
-# progress/urls.py
-from django.urls import path
-from .views import index, upload_file, progress
+      self.replace = wx.TextCtrl(panel) 
+      box.Add(self.replace, flag = wx.EXPAND|wx.ALL, border = 10) 
 
-urlpatterns = [
-    path('', index, name='index'),
-    path('upload/', upload_file, name='upload_file'),
-    path('progress/', progress, name='progress'),
-]
+      self.button = wx.Button(panel, -1, "Start", size = (50,50)) 
+      self.button.Bind(wx.EVT_BUTTON, self.OnClicked) 
+      box.Add(self.button, 0, flag = wx.ALIGN_CENTER) 
 
-# progressbar_project/urls.py
-from django.contrib import admin
-from django.urls import path, include
+      panel.SetSizer(box) 
+      self.Centre() 
+      self.Show(True) 
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('progress.urls')),
-]
+   def OnClicked(self, event): 
+      path = self.path.GetValue() 
+      find = self.find.GetValue() 
+      replace = self.replace.GetValue() 
+      self.find_and_replace(path, find, replace)
 
-<!-- progress/templates/progress/index.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Progress Bar Example</title>
-    <script src="https://unpkg.com/htmx.org@1.5.0"></script>
-</head>
-<body>
-    <h1>File Upload with Progress Bar</h1>
-    <form id="upload-form" method="post" enctype="multipart/form-data" hx-post="{% url 'upload_file' %}" hx-trigger="submit">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Upload</button>
-    </form>
-    <div id="progress-container" style="display:none;">
-        <div id="progress-bar" style="width: 0%; background-color: green; height: 20px;"></div>
-    </div>
-    <script>
-        document.querySelector('#upload-form').addEventListener('htmx:beforeRequest', function() {
-            document.querySelector('#progress-container').style.display = 'block';
-            updateProgress();
-        });
+   def find_and_replace(self, path, find, replace):
+      with zipfile.ZipFile(path, 'r') as myzip:
+         for filename in myzip.namelist():
+            if filename.endswith('.xml'):
+               with myzip.open(filename) as myfile:
+                  tree = ET.parse(myfile)
+                  root = tree.getroot()
+                  for elem in root.iter():
+                     if elem.text == find:
+                        elem.text = replace
+                  tree.write(filename)
+      with zipfile.ZipFile(path, 'w') as myzip:
+         for filename in os.listdir('.'):
+            if filename.endswith('.xml'):
+               myzip.write(filename)
 
-        function updateProgress() {
-            fetch("{% url 'progress' %}")
-                .then(response => response.json())
-                .then(data => {
-                    let progressBar = document.querySelector('#progress-bar');
-                    progressBar.style.width = data.progress + '%';
-                    if (data.progress < 100) {
-                        setTimeout(updateProgress, 100);
-                    } else {
-                        alert('Upload complete!');
-                    }
-                });
-        }
-    </script>
-</body>
-</html>
-
-
-
+app = wx.App() 
+Mywin(None, 'Find and Replace in XML') 
+app.MainLoop() 
