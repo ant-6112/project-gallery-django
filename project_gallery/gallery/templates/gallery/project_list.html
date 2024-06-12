@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Project Gallery</title>
+    </head>
+    <body>
+        <h1>Projects</h1>
+        <a href="{% url 'add_project' %}">Add New Project</a>
+        <ul>
+            {% for project in projects %}
+            <li>
+                <a href="{% url 'project_form' project.id %}"
+                    >{{ project.name }}</a
+                >
+                ({{ project.programmed_by }})
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

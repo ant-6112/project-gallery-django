@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Add Field to {{ project.name }}</title>
+    </head>
+    <body>
+        <h1>Add Field to {{ project.name }}</h1>
+        <form method="post">
+            {% csrf_token %} {{ field_form.as_p }}
+            <button type="submit">Add Field</button>
+        </form>
+        <h2>Current Fields</h2>
+        <ul>
+            {% for field in fields %}
+            <li>{{ field.field_name }} ({{ field.get_field_type_display }})</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
